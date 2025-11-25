@@ -3,15 +3,12 @@ from datetime import datetime
 import pytz
 import os
 
-# Часовой пояс Омска
 OMS_TZ = pytz.timezone("Asia/Omsk")
 
-# Папка и файл базы данных
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 DB_NAME = os.path.join(DATA_DIR, "database.db")
 
-# Создаём папку data, если её нет
 os.makedirs(DATA_DIR, exist_ok=True)
 
 
@@ -57,11 +54,16 @@ def get_last_records(limit=20):
     conn.close()
     return rows
 
-
-def clear_db():
-    """Очистка всей базы"""
+def get_current_holder_by_type(uniform_type):
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-    cur.execute("DELETE FROM laundry")
-    conn.commit()
+    cur.execute("""
+        SELECT user, timestamp
+        FROM laundry
+        WHERE uniform_type = ?
+        ORDER BY id DESC
+        LIMIT 1
+    """, (uniform_type,))
+    row = cur.fetchone()
     conn.close()
+    return row
