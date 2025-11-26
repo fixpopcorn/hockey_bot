@@ -1,12 +1,11 @@
 services:
   hockey_bot:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: hockey_bot
     env_file:
       - .env
     volumes:
       - ./data:/app/data
-    restart: unless-stopped
-
-volumes:
-  hockey_bot_db:
+    restart: always

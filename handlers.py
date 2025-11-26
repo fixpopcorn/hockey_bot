@@ -108,7 +108,7 @@ async def button_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             text = f"{uniform_type}: сейчас никто не взял комплект."
 
-        await query.edit_message_text(text, reply_markup=holders_keyboard())
+        await query.edit_message_text(text)
         return
 
     uniform_map = {
