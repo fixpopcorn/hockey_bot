@@ -40,7 +40,6 @@ env/
 # --------------------------
 # Docker
 # --------------------------
-*.dockerignore
 docker-compose.override.yml
 
 # --------------------------
