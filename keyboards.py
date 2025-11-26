@@ -17,3 +17,23 @@ def holders_keyboard():
         [InlineKeyboardButton("❌ Отмена", callback_data="cancel")]
     ]
     return InlineKeyboardMarkup(keyboard)
+
+def list_keyboard():
+    keyboard = [
+        [InlineKeyboardButton("📋 Показать список", callback_data="show_list")],
+        [InlineKeyboardButton("🗑 Удалить запись", callback_data="delete_select")],
+        [InlineKeyboardButton("❌ Отмена", callback_data="cancel")]
+    ]
+    return InlineKeyboardMarkup(keyboard)
+
+def delete_buttons(records):
+    keyboard = []
+    for rec_id, user, uniform_type, ts in records:
+        text = f"{ts} — {user}: {uniform_type}"
+        keyboard.append(
+            [InlineKeyboardButton(f"❌ {text}", callback_data=f"del_{rec_id}")]
+        )
+    keyboard.append(
+        [InlineKeyboardButton("⬅ Назад", callback_data="back_to_list")]
+    )
+    return InlineKeyboardMarkup(keyboard)

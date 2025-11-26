@@ -67,3 +67,20 @@ def get_current_holder_by_type(uniform_type):
     row = cur.fetchone()
     conn.close()
     return row
+
+def get_all_records():
+    conn = sqlite3.connect(DB_NAME)
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, user, uniform_type, timestamp FROM laundry ORDER BY id DESC"
+    )
+    rows = cur.fetchall()
+    conn.close()
+    return rows
+
+def delete_record(rec_id: int):
+    conn = sqlite3.connect(DB_NAME)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM laundry WHERE id = ?", (rec_id,))
+    conn.commit()
+    conn.close()

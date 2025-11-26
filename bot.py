@@ -2,7 +2,7 @@ import logging
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler
 from config import BOT_TOKEN
 from db import init_db
-from handlers import take, list_records, button_click, holders
+from handlers import take, list_menu, button_click, holders
 from telegram import BotCommand
 
 logging.basicConfig(
@@ -30,7 +30,7 @@ def main():
     app.post_init = on_startup 
 
     app.add_handler(CommandHandler("take", take))
-    app.add_handler(CommandHandler("list", list_records))
+    app.add_handler(CommandHandler("list", list_menu))
     app.add_handler(CommandHandler("holders", holders))
     app.add_handler(CallbackQueryHandler(button_click))
 
