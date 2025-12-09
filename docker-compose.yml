@@ -1,0 +1,12 @@
+services:
+  hockey_bot:
+    build: .
+    container_name: hockey_bot
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+
+volumes:
+  hockey_bot_db:

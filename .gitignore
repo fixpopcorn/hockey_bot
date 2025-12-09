@@ -1,0 +1,57 @@
+# --------------------------
+# Python
+# --------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# --------------------------
+# Secrets
+# --------------------------
+.env
+
+# --------------------------
+# Database
+# --------------------------
+data/database.db
+
+# --------------------------
+# Virtual Environments
+# --------------------------
+venv/
+env/
+.venv/
+
+# --------------------------
+# IDE / Editor
+# --------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# --------------------------
+# Docker
+# --------------------------
+*.dockerignore
+docker-compose.override.yml
+
+# --------------------------
+# System files
+# --------------------------
+.DS_Store
+Thumbs.db
+
+# --------------------------
+# Misc temporary files
+# --------------------------
+*.bak
+*.tmp
+*.log
